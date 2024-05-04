@@ -45,6 +45,7 @@ public class playerController : MonoBehaviour
             velocity.y = -2f;
         }
 
+
         float moveZ = Input.GetAxis("Vertical");
         moveDirection = new Vector3(0, 0, moveZ);
         moveDirection = transform.TransformDirection(moveDirection);
@@ -82,12 +83,14 @@ public class playerController : MonoBehaviour
                 defeatedEmote();
 
             }
-            moveDirection *= moveSpeed;
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 jump();
             }
+
+            moveDirection *= moveSpeed;
+
         }
 
         controller.Move(moveDirection * Time.deltaTime);
@@ -103,13 +106,16 @@ public class playerController : MonoBehaviour
     {
         moveDirection = Vector3.zero;
         anim.SetFloat("Speed", 0, 0.1f, Time.deltaTime);
+        velocity.x = 0;
+        velocity.z = 0;
     }
 
     private void Walk()
     {
         moveSpeed = walkSpeed;
         anim.SetFloat("Speed", 0.5F, 0.1f, Time.deltaTime);
-
+        velocity.x = 0;
+        velocity.z = 0;
     }
 
     private void walkBackwords()
@@ -125,7 +131,10 @@ public class playerController : MonoBehaviour
     private void jump()
     {
         anim.SetTrigger("jump");
+        // Set the vertical component of the velocity to the calculated jump strength.
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        velocity.x = moveDirection.x * moveSpeed;
+        velocity.z = moveDirection.z * moveSpeed;    
     }
 
     private void defeatedEmote()
