@@ -24,5 +24,6 @@ public class CharacterControllerScrewGame : MonoBehaviour
 
         // Set animation speed based on rotation speed
         animator.SetFloat("Speed", speed / maxRotationSpeed); // Normalize speed to the range [0, 1]
+        animator.speed = Mathf.Max(1f, speed / 50f); // Change animation speed based on 1/3 maxRotationSpeed value, minimum animation speed must be 1 or else it'll look funky
     }
 }
