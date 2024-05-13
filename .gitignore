@@ -72,4 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # File Heavy Assets
-*.Ch50_nonPBR.fbx
+Assets/Ch50_nonPBR.fbx
+
