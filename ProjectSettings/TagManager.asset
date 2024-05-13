@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Screw
+  - SpawnPoint
+  - Floors
+  - Ceiling
   layers:
   - Default
   - TransparentFX

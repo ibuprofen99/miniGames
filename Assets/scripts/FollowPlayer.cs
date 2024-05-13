@@ -10,6 +10,8 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + new Vector3(12, 5, -3);
+        Vector3 oldPos = transform.position;
+        Vector3 move = player.transform.position + new Vector3(12, 4, -3);
+        transform.position = Vector3.Slerp(oldPos, move, Time.deltaTime);
     }
 }
